@@ -31,24 +31,47 @@ const studentSchema = new mongoose.Schema({
 //create a model for students
 const Student = mongoose.model("Student", studentSchema);
 
+//update the value
+Student.updateOne({ name: "Concordia Xu" }, { name: "Guanshaojie Xu" }).then(
+  (meg) => {
+    console.log(meg);
+  }
+);
+
+Student.updateMany({ major: "EE" }, { major: "Electrical Enginnering" }).then(
+  (meg) => {
+    console.log(meg);
+  }
+);
+
+//find the value
+// Student.find({}).then((data) => {
+//   console.log(data);
+// });
+
+//find the first one of the database
+// Student.findOne({ name: "Concordia Xu" }).then((data) => {
+//   console.log(data);
+// });
+
 //model mongo Shell
 //create an object
-const Xu = new Student({
-  name: "Concordia Xu",
-  age: 25,
-  major: "BA",
-  scholarship: { merit: 2500, other: 1300 },
-});
+// const Xu = new Student({
+//   name: "Concordia Xu",
+//   age: 25,
+//   major: "BA",
+//   scholarship: { merit: 2500, other: 1300 },
+// });
 
 //save Xu into database
-Xu.save()
-  .then(() => {
-    console.log("Concordia has been save in the database");
-  })
-  .catch((e) => {
-    console.log("error happend.");
-    console.log(e);
-  });
+// Xu.save()
+//   .then(() => {
+//     console.log("Concordia has been save in the database");
+//   })
+//   .catch((e) => {
+//     console.log("error happend.");
+//     console.log(e);
+//   });
 
 app.use(express.static("public"));
 
